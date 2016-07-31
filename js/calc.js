@@ -4,6 +4,10 @@ window.onload = function () {
       clear = document.getElementsByClassName('clear')[0];
   
   for (var i = 0; i < buttons.length; i += 1) {
+    // It will loop through all the buttons to add onclick-event
+    // If the inside of that button is NOT '=' --> we will
+    // add the onclick-function: addValue(i). 
+    // If it is '=' --> add the onclick-function: calculate(i)
     if (buttons[i].innerHTML === '=') {
       buttons[i].addEventListener("click", calculate(i));
     } else {
@@ -16,14 +20,22 @@ window.onload = function () {
   };  
   
   function addValue(i) {
+      //Adding string values together combining numbers 
+      //and operators to later be evaluated
     return function () {
       if (buttons[i].innerHTML === '÷') {
          result.innerHTML  += '/';
       } else if (buttons[i].innerHTML === 'x') {
          result.innerHTML  += '*';
+      } else if (buttons[i].innerHTML === 'mod') {
+         result.innerHTML  += '%';
+      } else if (buttons[i].innerHTML === 'increment') {
+         result.innerHTML++;
+      } else if (buttons[i].innerHTML === 'decrement') {
+         result.innerHTML--;
       } else {
-					result.innerHTML += buttons[i].innerHTML;
-			}
+            result.innerHTML += buttons[i].innerHTML;
+        }
     };
   }
   
@@ -37,5 +49,5 @@ window.onload = function () {
 			  
       result.innerHTML = eval(bugFix);
     };
-  }
+  };
 };
