@@ -16,7 +16,7 @@ window.onload = function () {
   }
   
   clear.onclick = function () {
-    result.innerHTML = '';
+    result.innerHTML = ''; 
   };  
   
   function addValue(i) {
@@ -33,11 +33,30 @@ window.onload = function () {
          result.innerHTML++;
       } else if (buttons[i].innerHTML === 'decrement') {
          result.innerHTML--;
+      } else if (buttons[i].innerHTML === 'factorial') {
+          function factorial(num)
+            {
+                // If the number is less than 0, reject it.
+                if (num < 0) {
+                    return -1;
+                }
+                // If the number is 0, its factorial is 1.
+                else if (num === 0) {
+                    return 1;
+                }
+                // Otherwise, call this recursive procedure again.
+                else {
+                    return (num * factorial(num - 1));
+                }
+            }
+            var fact = factorial(result.innerHTML);
+            result.innerHTML = fact;
       } else {
             result.innerHTML += buttons[i].innerHTML;
         }
     };
   }
+
   
   function calculate(i) {
     return function () {
